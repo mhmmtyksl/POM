@@ -9,18 +9,17 @@ public class AmazonPage {
 
     WebDriver driver;
     // bir page sayfasi olusturuldugunda mutlaka yapmamiz gereken sey
-    // bir constructor olusturup driver a ilk degeri atamaktir (instantiate)
-    public AmazonPage(WebDriver driver) {
+    // bir constructor olusturup driver'a ilk degeri atamaktir (instantiate)
+    public AmazonPage(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
-        // bu her page sayfasi icin mutlaka olmasi gereken olmazsa olmaz satirdir
-        // bunu da constructor in icine yaziyoruz.
     }
 
-    public AmazonPage() {
+    public AmazonPage(){
 
     }
 
+    //WebElement aramaKutusu= driver.findElement(By.id("twotabsearchtextbox"));
     @FindBy(id="twotabsearchtextbox")
     public WebElement aramaKutusu;
 
@@ -28,9 +27,9 @@ public class AmazonPage {
     public WebElement sonucYazisiElementi;
 
     @FindBy(id="searchDropdownBox")
-    public WebElement dropDownMenu;
+    public WebElement dropdownMenu;
 
-    @FindBy(xpath = "(//span[@class='a-size-base a-color-base a-text-normal'])[1]")
+    @FindBy(xpath = "//span[@class='a-size-medium a-color-base a-text-normal']")
     public WebElement ilkUrunIsim;
 
 }

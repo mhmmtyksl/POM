@@ -10,25 +10,23 @@ import utilities.TestBase;
 public class C03_Pages extends TestBase {
 
     @Test
-    public void test() {
+    public void test(){
 
         // amazon sayfasina gidin
         driver.get("https://www.amazon.com");
 
-        // dropDown dan book kategorisini secin
+        // dropdown menuden book kategorisini secin
         AmazonPage amazonPage=new AmazonPage(driver);
-        Select select=new Select(amazonPage.dropDownMenu);
+        Select select=new Select(amazonPage.dropdownMenu);
         select.selectByVisibleText("Books");
 
         // java icin arama yapin
         amazonPage.aramaKutusu.sendKeys("java"+ Keys.ENTER);
 
-        // bulunam sonuc sayisini yazin
+        // bulunan sonuc sayisini yazin
         System.out.println(amazonPage.sonucYazisiElementi.getText());
 
-        // ilk urunun  isminde java gectigini test edin
-        Assert.assertTrue(amazonPage.ilkUrunIsim.getText().);
-
-
+        // ilk urunun isminde Java gectigini test edin
+        Assert.assertTrue(amazonPage.ilkUrunIsim.getText().contains("Java"));
     }
 }

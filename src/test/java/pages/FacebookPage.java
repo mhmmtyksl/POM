@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,13 +10,10 @@ public class FacebookPage {
 
     WebDriver driver;
 
-    Public FacebookPage(WebDriver driver) {
+    public FacebookPage(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
-
     }
-
-    public FacebookPage(){}
 
     @FindBy(id="email")
     public WebElement mailKutusu;
@@ -23,11 +21,13 @@ public class FacebookPage {
     @FindBy(id="pass")
     public WebElement sifreKutusu;
 
-    @FindBy(name="login")
-    public WebElement loginKutusu;
+    @FindBy(name = "login")
+    public WebElement loginTusu;
 
     @FindBy(className="_9ay7")
     public WebElement girilemediYaziElementi;
 
-    public void
+    public void cookiesgec(){
+        driver.findElement(By.xpath("//button[@class='_42ft _4jy0 _9xo7 _4jy3 _4jy1 selected _51sy']")).click();
+    }
 }
