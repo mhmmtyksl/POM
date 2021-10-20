@@ -10,7 +10,7 @@ import utilities.TestBase;
 public class C03_Pages extends TestBase {
 
     @Test
-    public void test(){
+    public void test(){ // bunu yapmak icin sadece eksik olan locatorleri facebookPage class ina ekleyip sonra islemleri yapacaz
 
         // amazon sayfasina gidin
         driver.get("https://www.amazon.com");
@@ -22,6 +22,7 @@ public class C03_Pages extends TestBase {
 
         // java icin arama yapin
         amazonPage.aramaKutusu.sendKeys("java"+ Keys.ENTER);
+        // aramaKutusunu daha once locate ettigimiz icin hemen kullaniyoruz
 
         // bulunan sonuc sayisini yazin
         System.out.println(amazonPage.sonucYazisiElementi.getText());

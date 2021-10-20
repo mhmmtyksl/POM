@@ -8,13 +8,13 @@ import org.testng.annotations.Test;
 import pages.AmazonPage;
 import utilities.TestBase;
 
-public class C01_Pages extends TestBase {
+public class C01_Pages extends TestBase { // burada normalde driver yok ama extends oldugu icin calistirabiliyoruz
 
     // amazon sayfasina gidin
     // "nutella" icin arama yapin
-    // sonuc sayisini yazdirin ve sonuc yazisinin nutella icerdigini test edin
+    // sonuc sayisini yazdirin ve sonuc yazisinin "nutella" icerdigini test edin
     @Test
-    public void test() {
+    public void test() { // burasi normal yaptigimiz onceki yontemle yapmak
 
         driver.get("https://www.amazon.com");
         WebElement aramaKutusu=driver.findElement(By.id("twotabsearchtextbox"));
@@ -25,10 +25,11 @@ public class C01_Pages extends TestBase {
     }
 
     @Test
-    public void testPOM() {
+    public void testPOM() { // burasi ise yeni ogrendigimiz sekilde yapmak icin uretilen method
 
         driver.get("https://www.amazon.com");
-        AmazonPage amazonPage=new AmazonPage(driver);
+        AmazonPage amazonPage=new AmazonPage(driver); // eger parantez icindeki deriver i yazmazsak
+        // calismaz
         amazonPage.aramaKutusu.sendKeys("nutella"+Keys.ENTER);
         System.out.println(amazonPage.sonucYazisiElementi.getText());
         Assert.assertTrue(amazonPage.sonucYazisiElementi.getText().contains("nutella"));
