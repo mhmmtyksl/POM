@@ -18,7 +18,7 @@ public class C03_Pages extends TestBase {
         // dropdown menuden book kategorisini secin
         AmazonPage amazonPage=new AmazonPage(driver);
         Select select=new Select(amazonPage.dropdownMenu);
-        select.selectByVisibleText("Books");
+        select.selectByVisibleText("Bücher");
 
         // java icin arama yapin
         amazonPage.aramaKutusu.sendKeys("java"+ Keys.ENTER);

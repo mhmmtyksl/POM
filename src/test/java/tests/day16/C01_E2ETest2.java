@@ -20,7 +20,7 @@ public class C01_E2ETest2 {
         // a. Username : manager  b. Password  : Manager1!
         // 5. Login butonuna tıklayın.
         QAConcortPage qaConcortPage=new QAConcortPage();
-        qaConcortPage.ConcortHotelLogin();
+        qaConcortPage.ConcortHotelLogin(); // yukaridaki adimlari bu methodla yapiyoruz tek adimda
 
         // 6. Hotel Management menusunden Add Hotelroom butonuna tıklayın.
         qaConcortPage.hotelManagementLinki.click();
@@ -28,6 +28,7 @@ public class C01_E2ETest2 {
         qaConcortPage.addHotelRoomButonu.click();
 
         // 7. Açılan sayfadaki tüm metin kutularına istediğiniz verileri girin.
+        // burada dropdown var once bunu locate edip sonrakileri Tab ile gecebiliriz
         Select select=new Select(qaConcortPage.addRoomIdDropDown);
         select.selectByVisibleText(ConfigReader.getProperty("CHQAAddRoomIdHotel"));
 
@@ -47,7 +48,7 @@ public class C01_E2ETest2 {
                 .sendKeys(ConfigReader.getProperty("CHQAAddRoomPrice"))
                 .perform();
 
-        select=new Select(qaConcortPage.addRoomType);
+        select=new Select(qaConcortPage.addRoomType);//burada yeni atama yapilmasi gerekir sdelect e
         select.selectByVisibleText(ConfigReader.getProperty("CHQAAddRoomType"));
 
         actions.sendKeys(Keys.TAB).
@@ -59,9 +60,10 @@ public class C01_E2ETest2 {
                 sendKeys(Keys.SPACE).perform();
 
         Thread.sleep(2000);
-        qaConcortPage.addRoomSaveButonu.click();
 
         // 8. Save butonuna basin.
+        qaConcortPage.addRoomSaveButonu.click();
+
         // 9. “HotelRoom was inserted successfully” textinin göründüğünü test edin.
         Thread.sleep(2000);
         Assert.assertTrue(qaConcortPage.addRoomSuccessfulYazisi.isDisplayed());
@@ -70,12 +72,12 @@ public class C01_E2ETest2 {
         qaConcortPage.addRoomAlertOkButonu.click();
 
         //11. Hotel rooms linkine tıklayın.
-        actions.sendKeys(Keys.HOME).perform();
+        actions.sendKeys(Keys.HOME).perform(); // sayfa asagida oldugundan tekrar yukari cikmak icin Home tusuna bastik
         Thread.sleep(2000);
 
         qaConcortPage.addRoomHotelRoomsLinki.click();
 
-        //12. "LIST OF HOTELROOMS" textinin göründüğünü doğrulayın..
+        //12. "LIST OF HOTELROOMS" textinin göründüğünü test edin..
         Assert.assertTrue(qaConcortPage.addRoomHotelRoomListYazisi.isDisplayed());
 
         Driver.closeDriver();

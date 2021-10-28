@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -47,6 +48,18 @@ public class QAConcortPage {
     @FindBy(id="Code")
     public WebElement addHotelCodeKutusu;
 
+    @FindBy(id="IDGroup")
+    public WebElement addHotelDropdown;
+
+    @FindBy(id="btnSubmit")
+    public WebElement addHotelSave;
+
+    @FindBy(xpath="//div[@class='bootbox-body']")
+    public WebElement addHotelSuccesfullYazisi;
+
+    @FindBy(xpath="//button[@class='btn btn-primary']")
+    public WebElement addHotelAllertOk;
+
     @FindBy (partialLinkText = "Hotel Rooms")
     public WebElement hotelRoomsLinki;
 
@@ -74,7 +87,7 @@ public class QAConcortPage {
     @FindBy (xpath = "//span[text()='List Of Hotelrooms']")
     public WebElement addRoomHotelRoomListYazisi;
 
-    @FindBy(xpath = "//thead/tr[1]/th")
+    @FindBy(xpath = "//thead/tr[1]/th") // burada Web elementlerden olusan bir List imiz var bu yuzden List yaptik
     public List<WebElement> basliklarListesi;
 
     @FindBy(xpath = "//tbody")
@@ -83,11 +96,14 @@ public class QAConcortPage {
     @FindBy(xpath = "//tbody//tr")
     public List<WebElement> satirlarListesi;
 
-    @FindBy(xpath = "//tbody//tr[1]")
+    @FindBy(xpath = "//tbody//tr[1]") // buradaki tr satirlari ifade eder
     public WebElement birinciSatir;
 
-    @FindBy(xpath = "//tbody//tr//td[4]")
+    @FindBy(xpath = "//tbody//tr//td[4]") // buradaki td sutunlari ifade eder
     public List<WebElement> dorduncuSutunListesi;
+
+    @FindBy(xpath = "//tbody//tr//td")
+    public List<WebElement> hucrelerListesi;
 
 
     public void ConcortHotelLogin(){
@@ -97,5 +113,23 @@ public class QAConcortPage {
         qaConcortPage.userNameKutusu.sendKeys(ConfigReader.getProperty("CHQAValidUsername"));
         qaConcortPage.passwordKutusu.sendKeys(ConfigReader.getProperty("CHQAValidPassword"));
         qaConcortPage.loginButonu.click();
+    }
+
+
+    public String printData(int satir, int sutun) {
+        // ornekteki haliyle 3. satir 5. sutundaki elemani yazdiralim
+        // String xpath= //tbody//tr[3]//td[5]
+        // degismeyecek kisimlari String olarak, degisecek kisimlari ise parametre ismi olarak yazdik
+
+        String xpath="//tBody//tr["+satir+"]//td["+sutun+"]";// burada xpath i belirledik
+
+        // satir no : 3, sutun no : 5
+        // System.out.println("satir no : "+satir+" sutun no : "+sutun);// bunu gormek icin yapmistik gerek yok
+
+        // @FindBy notasyonu parametreli calismadigi icin onceki yontemle locate edelim
+        String istenenData=Driver.getDriver().findElement(By.xpath(xpath)).getText();
+        System.out.println("satir no "+satir+", sutun no "+sutun+"'deki data : "+istenenData);
+
+        return istenenData;
     }
 }

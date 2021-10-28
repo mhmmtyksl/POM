@@ -13,7 +13,7 @@ public class C01_Pages extends TestBase { // burada normalde driver yok ama exte
     // amazon sayfasina gidin
     // "nutella" icin arama yapin
     // sonuc sayisini yazdirin ve sonuc yazisinin "nutella" icerdigini test edin
-    @Test
+    @Test(groups = "birinciGrup")
     public void test() { // burasi normal yaptigimiz onceki yontemle yapmak
 
         driver.get("https://www.amazon.com");

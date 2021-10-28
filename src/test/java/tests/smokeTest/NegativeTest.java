@@ -18,8 +18,8 @@ public class NegativeTest {
 
     QAConcortPage qaConcortPage; // burada sadece obje yi class levelde olusturduk asagida deger atamasi yaptik
 
-    @Test(priority = -5) // diger methodlara sira vermedigimiz onlari 0 kabul eder bu yuzden buna negatif verdikki ilk sirada calisssin.
-    public void yanlisSifreTest() {
+    @Test(priority = -5, groups = "birinciGrup") // diger methodlara sira vermedigimiz onlari 0 kabul eder bu yuzden buna negatif verdikki ilk sirada calisssin.
+    public void yanlisSifreTest() { // buradaki groups ifadesi daha sonra ki derslerde ogrenilen xml kapsaminda yapildi
 
         //2) https://qa-environment.concorthotel.com/ adresine git
         Driver.getDriver().get(ConfigReader.getProperty("CHQAUrl"));
@@ -39,7 +39,7 @@ public class NegativeTest {
         Assert.assertTrue(qaConcortPage.basarisizGirisYazisiElementi.isDisplayed());
 
 }
-    @Test(dependsOnMethods = "yanlisSifreTest")
+    @Test(dependsOnMethods = "yanlisSifreTest", groups = "birinciGrup")
     public void yanlisKullaniciTest() { // burada tekrardan url ye gitmeye gerek yok
         // ancak hangi sayfanin once calisacagi da belli olmadigi icin priority ile sira numarasi verdik
         // ve bunlari da ilk method a depends on yaptik bagimli kildik

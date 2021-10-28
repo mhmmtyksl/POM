@@ -13,7 +13,7 @@ public class C02_WebTable {
 
         // Bir class oluşturun : C02_WebTables
         //● login() metodun oluşturun ve oturum açın.
-        //● https://qa-environment.concorthotel.com/ adresine gidin
+        //● https://qa-environment.concorthotel.com//admin/HotelRoomAdmin adresine gidin
         // ○ Username : manager
         // ○ Password : Manager1!
         QAConcortPage qaConcortPage=new QAConcortPage();
@@ -27,16 +27,15 @@ public class C02_WebTable {
         System.out.println("Tablodaki sutun sayisi : "+qaConcortPage.basliklarListesi.size());
 
         // ○ Table’daki tum body’I ve başlıkları(headers) konsolda yazdırın.
+        // eger tum tablo body sini hucrelere ayirmadan tek bir String olarak gormek istersek
+        // tum body i tek bir WebElement olarak locate edebiliriz.
+        // tabloda "HAPPY HOTEL" var mi gibi sorular icin ideal bir cozum olur.
         System.out.println(qaConcortPage.tBodyTumu.getText());
         Assert.assertTrue(qaConcortPage.tBodyTumu.getText().contains("HAPPY HOTEL"));
 
         for (WebElement each: qaConcortPage.basliklarListesi) {
-            System.out.println(each.getText());
+            System.out.println(each.getText()); // burada her bir basligi tek tek alarak get.text ile stringe cevirdik
         }
-
-        // eger tum tablo body sini hucrelere ayirmadan tek bir String olarak gormek istersek
-        // tum body i tek bir WebElement olarak locate edebiliriz.
-        // tabloda "HAPPY HOTEL" var mi gibi sorular icin ideal bir cozum olur.
 
         //● printRows() metodu oluşturun //tr
         // ○ table body’sinde bulunan toplam satir(row) sayısını bulun.
@@ -51,11 +50,27 @@ public class C02_WebTable {
         }
 
 
-        // ○ 4.satirdaki(row) elementleri konsolda yazdırın.
+        // ○ 4.sutundaki elementleri konsolda yazdırın.
         for (WebElement each: qaConcortPage.dorduncuSutunListesi) {
             System.out.println(each.getText());
         }
-        Driver.closeDriver();
+
+        // ● printCells() metodu oluşturun //td
+        // ○ table body’sinde bulunan toplam hücre(cell) sayısını bulun.
+        System.out.println("Tablodaki toplam hucre sayisi : "+qaConcortPage.hucrelerListesi.size());
+
+        // ○ Table body’sinde bulunan hücreleri(cells) konsolda yazdırın.
+        for (WebElement each: qaConcortPage.hucrelerListesi) {
+            System.out.println(each.getText());
+        }
+
+        // ● printColumns() metodu oluşturun
+        // ○ table body’sinde bulunan toplam sutun(column) sayısını bulun.
+
+
+        // ○ Table body’sinde bulunan sutunlari(column) konsolda yazdırın.
+        // ○ 5.column daki elementleri konsolda yazdırın.
+        // Driver.closeDriver();
     }
 
 }

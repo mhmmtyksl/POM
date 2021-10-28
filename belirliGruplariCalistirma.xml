@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="gruplari calistirma">
+    <test name="grup calistirma">
+        <groups>
+            <run> <!-- run altinda isimlendirdigimiz grubu yazmamiz gerekir-->
+                <include name="birinciGrup"></include>
+            </run>
+        </groups>
+        <packages>
+            <package name="tests.smokeTest"></package>
+            <package name="tests.day14"></package>
+            <package name="tests.day17_ExcelAutomation"></package>
+            <!-- eger farkli cok fazla methodu calistiracaksak tek tek tum methodlari bulmak zor olabilir
+             bunun yerine calistirmak istedigimiz test methodlarina grup ismi verebiliriz
+             burada dikkat edilmesi gerekenler
+             1) xml dosyasi hazirlanirken diger xml lerden farkli olarak iki hiyerarsi olusturmamiz gerekir.
+                biri calistirilacak grup veya grup isimleri veya gruplarin kombinasyonlarini belirlemek icin
+                digeri belirlenen kombinasyondaki grup isimlerinin bulundugu yeri gostermek icin
+             2) belirledigimiz grup disinda hicbir class veya method calismasina musaade edilmeyecegi icin
+                dependsOn veya extends gibi keyword ler ile bagimli olan testler sorun cikarabilir.
+             3) Bir test calisirken diger testin calismasina zarar verebilir
+                (ornegin concort hotel de bir defa login olup sonra log out olmazsaniz
+                sonraki testler log in yazisini bulamayabilir
+
+
+            -->
+        </packages>
+    </test>
+</suite>
