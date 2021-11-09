@@ -58,7 +58,7 @@ public class C03_Raporlama extends TestBaseRapor {
         String sonucArrayi[]=sonucYazisi.split(" ");
 
         String sonucAdedi=sonucArrayi[3];
-        sonucAdedi=sonucAdedi.replace(",","");
+        sonucAdedi=sonucAdedi.replace(",",""); // burada sonucta 4000 deki virgulleri kaldirdik
         System.out.println(sonucAdedi);
         int sonucSayisi= Integer.parseInt(sonucAdedi);
 

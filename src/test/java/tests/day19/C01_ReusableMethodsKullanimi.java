@@ -39,10 +39,13 @@ public class C01_ReusableMethodsKullanimi {
         Driver.closeDriver();
     }
 
+    // burada yukaridaki methodun aynisini bu yontemle yapacagiz daha basit sekilde
     @Test
     public void testReusableIle(){
         Driver.getDriver().get("https://the-internet.herokuapp.com/windows");
         Driver.getDriver().findElement(By.linkText("Click Here")).click();
+        // bu ilk iki adim yukari ile ayni
+        // sonra ReusableMethods taki hazir methodlari kullaniyoruz.
         ReusableMethods.switchToWindow("New Window");
         WebElement newWindowYaziElementi=Driver.getDriver().findElement(By.tagName("h3"));
         Assert.assertTrue(newWindowYaziElementi.isDisplayed());

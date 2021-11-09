@@ -8,14 +8,15 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
-public class C02_WindowHandleRaporlu extends TestBaseRapor {
+public class C02_WindowHandleRaporlu extends TestBaseRapor { // raporlama methodlarinin oldugu class a extends yapiyoruz
+
 
     @Test
     public void test() {
-
+        // burada deger atamasi yapiyoruz
         extentTest=extentReports.createTest("window handle test", "yeni sayfada new window yazi test");
         Driver.getDriver().get("https://the-internet.herokuapp.com/windows");
-        extentTest.info("istenen adrese gidildi");
+        extentTest.info("istenen adrese gidildi"); // bunlarin icine raporda gozukecek yazilari yaziyoruz
 
         Driver.getDriver().findElement(By.linkText("Click Here")).click();
         extentTest.info("linke tiklandi");
@@ -32,5 +33,5 @@ public class C02_WindowHandleRaporlu extends TestBaseRapor {
 
 }
 
-// bunu calistirinca test-output diye bir package olustu
-// onun altinda rapor asag tiklayip open in Browser Chrome seciliyor ve sonuc gorunuyor
+// bunu calistirinca raporlar diye bir package olustu
+// onun altinda rapor.html asag tiklayip open in Browser Chrome seciliyor ve sonuc gorunuyor
